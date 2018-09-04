@@ -4,6 +4,7 @@ import * as Mongoose from 'mongoose';
 import { config } from './config/app-config';
 import { userRouter } from './routes/users.routes';
 import { gamesRouter } from './routes/games.routes';
+import { authRouter } from './routes/auth.routes';
 
 class App {
   public app: express.Application;
@@ -34,6 +35,7 @@ class App {
     db.once('open', () => {
       // Routes
       this.app.use('/user', userRouter);
+      this.app.use('/login', authRouter);
       this.app.use('/games', gamesRouter);
     });
   }
