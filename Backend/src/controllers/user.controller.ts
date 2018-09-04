@@ -1,11 +1,27 @@
 import { Request, Response } from 'express';
+import { User } from '../models/user.model';
+import { UserService } from './../services/user.service';
+import { IUser } from './../models/user.interface';
 
 class UserController {
-  constructor() {}
+  constructor(private userService: UserService) {}
 
-  public getUser(req: Request, res: Response): void {
-    res.status(200).send('users works!')
+  public getUser(req: Request, res: Response): Promise<Response> {
+    const queryUser = req.body;
+
+    return this.userService.getUser(queryUser)
+    .then((user: IUser)=> res.status(200).send(user))
+    .catch((err)=> res.status(400).send({msg: 'failed to find user'}))
+  }
+
+  public createUser(req, res): Promise<IUser> {
+    const newUser = new User(req.body);
+
+    return this.userService
+      .create(newUser)
+      .then((user: IUser) => res.status(200).send({ msg: 'user created' }))
+      .catch(err => res.status(400).send({msg: 'failed to create user'}));
   }
 }
-
-export const controller = new UserController()
+const service = new UserService();
+export const controller = new UserController(service);
