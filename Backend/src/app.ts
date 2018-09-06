@@ -12,6 +12,7 @@ class App {
   constructor() {
     this.app = express();
     this.config();
+    this.loadRoutes();
     this.dataBaseConnectorInit();
   }
 
@@ -21,9 +22,11 @@ class App {
       {
         useNewUrlParser: true
       }
-    ).then(() => {
-      console.log('connect to MongoDB successfully');
-    });
+    )
+      .then(() => {
+        console.log('connect to MongoDB successfully');
+      })
+      .catch(console.log);
 
     const db = Mongoose.connection;
 
@@ -31,13 +34,13 @@ class App {
       console.log('Error while attempting to connect to MongoDB', error);
       process.exit(1);
     });
+  }
 
-    db.once('open', () => {
-      // Routes
-      this.app.use('/user', userRouter);
-      this.app.use('/login', authRouter);
-      this.app.use('/games', gamesRouter);
-    });
+  private loadRoutes(): void {
+    // Routes
+    this.app.use('/user', userRouter);
+    this.app.use('/login', authRouter);
+    this.app.use('/games', gamesRouter);
   }
 
   private config(): void {
@@ -48,4 +51,6 @@ class App {
   }
 }
 
-export default new App().app;
+const app = new App().app;
+
+export default app;

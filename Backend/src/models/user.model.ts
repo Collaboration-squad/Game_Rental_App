@@ -1,4 +1,3 @@
-import { NextFunction } from 'express';
 import { Schema, Model, model } from 'mongoose';
 import { IUser } from './user.interface';
 
