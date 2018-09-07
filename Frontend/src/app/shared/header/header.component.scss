@@ -1,5 +1,5 @@
 header {
-	background: url('https://images.pexels.com/photos/163114/mario-luigi-figures-funny-163114.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+	background: url('https://images.unsplash.com/photo-1531904796324-bcfd734e57f1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2996cb13acadb7441ac2ae60f65cb139&auto=format&fit=crop&w=1358&q=80');
 	text-align: center;
 	width: 100%;
 	height: 500px;
@@ -15,12 +15,19 @@ header {
 		width: 100%;
 		height: 100%;
 		color: #fff;
-		text-shadow: 1px 1px 1px #333;
-		background-image: linear-gradient(135deg, #e0e6c367 10%, #d8d5bd42 100%);
-
+		
+		.header-text {
+			position: absolute;
+			top: 20%;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);
+		}
 		h1 {
 			font-family: 'Dancing Script', cursive;
 			font-size: 80px;
+			color: #9A899B;
+			text-shadow: 1px 1px 1px #333;
 			padding-top: 100px;
 			margin-bottom: 30px;
 			margin-top: 0;
@@ -28,7 +35,7 @@ header {
 		
 		h3 {
 			font-family: 'Open Sans', sans-serif;
-			padding: 20px;
+			color: #9A899B;
 			margin: 0 auto;
 			white-space: nowrap;
 			overflow: hidden;
@@ -48,22 +55,27 @@ header {
 			to { opacity: .0; }
 		}
 
-		#login-btn {
-			border: none;
-			outline: none;
-			padding: 10px 20px;
-			border-radius: 50px;
-			color: #333;
-			background: #fff;
+		.header-btns {
 			position: absolute;
 			bottom: 10px;
 			left: 50%;
 			margin-right: -50%;
 			transform: translate(-50%, -50%);
-			box-shadow: 0 3px 20px 0 #0000003b;
 
-			&:hover{
-				cursor: pointer;
+			.header-btn {
+				width: 100px;
+				border: none;
+				outline: none;
+				padding: 10px 20px;
+				margin: 10px;
+				border-radius: 50px;
+				color: #333;
+				background: #fff;
+				box-shadow: 0 3px 20px 0 #0000003b;
+
+				&:hover{
+					cursor: pointer;
+				}
 			}
 		}
 	}
