@@ -14,7 +14,6 @@ header {
 	.overlay {
 		width: 100%;
 		height: 100%;
-		padding: 50px;
 		color: #fff;
 		text-shadow: 1px 1px 1px #333;
 		background-image: linear-gradient(135deg, #e0e6c367 10%, #d8d5bd42 100%);
@@ -22,28 +21,50 @@ header {
 		h1 {
 			font-family: 'Dancing Script', cursive;
 			font-size: 80px;
+			padding-top: 100px;
 			margin-bottom: 30px;
+			margin-top: 0;
 		}
 		
 		h3 {
 			font-family: 'Open Sans', sans-serif;
-			margin-bottom: 30px;
-			box-decoration-break: clone;
-			padding: 0.5rem 1rem;
+			padding: 20px;
+			margin: 0 auto;
+			white-space: nowrap;
+			overflow: hidden;
+			width: 350px;
+			animation: type 4s steps(60, end);
+
+			span {
+				animation: blink 1s infinite;
+			}
+		}
+
+		@keyframes type { 
+			from { width: 0; } 
 		}
 		
-		button {
+		@keyframes blink {
+			to { opacity: .0; }
+		}
+
+		#login-btn {
 			border: none;
 			outline: none;
 			padding: 10px 20px;
 			border-radius: 50px;
 			color: #333;
 			background: #fff;
-			margin-bottom: 50px;
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			margin-right: -50%;
+			transform: translate(-50%, -50%);
 			box-shadow: 0 3px 20px 0 #0000003b;
+
+			&:hover{
+				cursor: pointer;
+			}
 		}
-		button:hover{
-			cursor: pointer;
-		}
-  	}
+	}
 }
