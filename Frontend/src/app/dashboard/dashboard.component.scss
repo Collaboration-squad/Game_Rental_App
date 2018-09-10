@@ -1,3 +1,40 @@
 .container {
-    
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    table {
+        width: 100%;
+        text-transform: uppercase;
+        
+        mat-header-row {
+            border-color: #C9B7C3;
+
+            mat-header-cell {
+                text-align: left;
+                font-weight: 500;
+                font-size: 12px;
+                border-bottom: 4px solid #C9B7C3;
+                background-color: #F0EBEE;
+            }
+        }
+
+        mat-row {
+            border-color: #C9B7C3;
+
+            mat-cell {
+                font-size: 12px;
+                background-color: #FDFBFA;
+
+                &:last-child {
+                    justify-content: space-evenly;
+                }
+
+                .mat-stroked-button {
+                    border-color: #C9B7C3;
+                }
+            }
+        }
+    }
+
 }
