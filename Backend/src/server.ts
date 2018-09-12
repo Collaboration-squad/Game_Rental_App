@@ -1,6 +1,5 @@
 import app from './app';
 import { config } from './config/app-config';
-import * as Mongoose from 'mongoose';
 import { openMongooseConnection } from 'conn';
 
 openMongooseConnection()

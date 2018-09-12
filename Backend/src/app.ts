@@ -1,7 +1,5 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import * as Mongoose from 'mongoose';
-import { config } from './config/app-config';
 import { userRouter } from './routes/users.routes';
 import { gamesRouter } from './routes/games.routes';
 import { authRouter } from './routes/auth.routes';
