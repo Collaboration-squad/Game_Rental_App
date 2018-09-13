@@ -3,10 +3,11 @@ import * as request from 'supertest';
 import app from './app';
 import * as Mongoose from 'mongoose';
 import {openMongooseConnection } from './conn';
+import { config } from './config/app-config';
 
 describe('App', () => {
   beforeAll((done) => {
-    openMongooseConnection().then(()=>{
+    openMongooseConnection(config.testDb).then(()=>{
       console.log('set testing env db')
       done()
     }).catch(done)
@@ -22,8 +23,6 @@ describe('App', () => {
   describe('Test users path', () => {
     describe('/user', () => {
       it('should response to /user post method', done => {
-   
-
         const user = {
           email: 'test@test',
           password: '1234'

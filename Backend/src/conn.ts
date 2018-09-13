@@ -1,11 +1,11 @@
 import * as mongoose from 'mongoose';
 import { config } from './config/app-config';
 
-function openMongooseConnection() {
+function openMongooseConnection(database) {
   return new Promise((resolve, reject) => {
     mongoose
       .connect(
-        config.db,
+        database,
         {
           useNewUrlParser: true
         }
