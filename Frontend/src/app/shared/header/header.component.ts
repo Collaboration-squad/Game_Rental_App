@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import Typed from 'typed.js';
-
 
 @Component({
   selector: 'app-header',
@@ -8,4 +6,3 @@ import Typed from 'typed.js';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent { }
-
