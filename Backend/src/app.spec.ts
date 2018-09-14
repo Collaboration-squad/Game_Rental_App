@@ -2,8 +2,16 @@ import 'jasmine';
 import * as request from 'supertest';
 import app from './app';
 import * as Mongoose from 'mongoose';
+import {openMongooseConnection } from './conn';
+import { config } from './config/app-config';
 
 describe('App', () => {
+  beforeAll((done) => {
+    openMongooseConnection(config.testDb).then(()=>{
+      console.log('set testing env db')
+      done()
+    }).catch(done)
+  });
   afterAll(() => {
     //clean up db after tests
     Mongoose.connection.dropCollection('users');
@@ -11,6 +19,7 @@ describe('App', () => {
   it('should work', () => {
     expect(app).toBeTruthy();
   });
+
   describe('Test users path', () => {
     describe('/user', () => {
       it('should response to /user post method', done => {
