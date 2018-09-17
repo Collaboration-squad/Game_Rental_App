@@ -6,7 +6,7 @@ import { IUser } from './../models/user.interface';
 class UserController {
   constructor(private userService: UserService) {}
 
-  public createUser(req, res): Promise<IUser> {
+  public createUser(req: Request, res: Response): Promise<Response> {
     const newUser = new User(req.body);
 
     return this.userService

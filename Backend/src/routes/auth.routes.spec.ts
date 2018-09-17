@@ -48,6 +48,7 @@ describe('Login route', () => {
         .post(`/login`)
         .send(mockUser)
         .then(resp => {
+          console.log(resp);
           expect(resp.status).toEqual(200);
           expect(resp.body.msg).toBeTruthy();
           done();
@@ -62,7 +63,7 @@ describe('Login route', () => {
         .send(mockUser)
         .then(resp => {
           expect(resp.status).toEqual(401);
-          expect(resp.body.msg).toEqual('invalid email');
+          expect(resp.body.message).toEqual('invalid email');
           done();
         })
         .catch(err => done());
@@ -75,7 +76,7 @@ describe('Login route', () => {
         .send(mockUser)
         .then(resp => {
           expect(resp.status).toEqual(404);
-          expect(resp.body.msg).toEqual('wrong login or password');
+          expect(resp.body.message).toEqual('wrong login or password');
           done();
         })
         .catch(err => done());
