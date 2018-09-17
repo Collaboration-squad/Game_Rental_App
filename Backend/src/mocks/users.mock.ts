@@ -1,8 +1,5 @@
-export const properUser = {
-  email: 'test@test',
+export const mockUser = {
+  email: 'test@test.gmail',
   password: '1234'
 };
-export const brokenUser = {
-  email: 'test@test',
-  password: '12345'
-};
+

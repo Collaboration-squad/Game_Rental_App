@@ -18,7 +18,7 @@ class AuthController {
           ? res.status(200).send({ msg: `user ${user._id} successfully login` })
           : res.status(401).send({ msg: 'invalid email' });
       })
-      .catch(err => res.status(404).send({ msg: 'invalid credentials' }));
+      .catch(err => res.status(404).send({ msg: 'wrong login or password' }));
   }
 }
 const service = new UserService();
