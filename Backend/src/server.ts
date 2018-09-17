@@ -1,8 +1,9 @@
 import app from './app';
 import { config } from './config/app-config';
-import { openMongooseConnection } from './conn';
+import { connector } from './connectors/mongoose.connector';
 
-openMongooseConnection(config.db)
+connector
+  .openConnection(config.db)
   .then(() => {
     console.log('connection established');
     app.listen(config.port, () => {

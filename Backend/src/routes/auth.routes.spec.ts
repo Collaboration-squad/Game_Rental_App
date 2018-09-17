@@ -1,15 +1,16 @@
 import 'jasmine';
 import * as request from 'supertest';
 import app from '../app';
-import { openMongooseConnection, dropMongooseDb } from '../conn';
 import { config } from '../config/app-config';
 import { User } from '../models/user.model';
 import { properUser, brokenUser } from '../mocks/users.mock';
+import { connector } from '../connectors/mongoose.connector';
 
 describe('Login route', () => {
   beforeAll(done => {
     //create test db
-    openMongooseConnection(config.testDb)
+    connector
+      .openConnection(config.testDb)
       .then(() => {
         console.log('set testing env db');
         done();
@@ -38,7 +39,7 @@ describe('Login route', () => {
 
   afterAll(() => {
     //clean up db after tests
-    dropMongooseDb('users');
+    connector.dropDb('users');
   });
 
   describe('/login', () => {

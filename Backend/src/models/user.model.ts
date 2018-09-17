@@ -9,8 +9,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: [true, 'password not specified'],
-    minlength: 2,
+    minlength: 2
   }
 });
 
-export const User: Model<IUser> = model<IUser>('User', userSchema)
+export const User: Model<IUser> = model<IUser>('User', userSchema);
