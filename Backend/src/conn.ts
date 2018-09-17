@@ -1,5 +1,4 @@
 import * as mongoose from 'mongoose';
-import { config } from './config/app-config';
 
 function openMongooseConnection(database) {
   return new Promise((resolve, reject) => {
@@ -19,4 +18,8 @@ function closeMongooseConnection() {
   return mongoose.disconnect();
 }
 
-export { openMongooseConnection, closeMongooseConnection };
+function dropMongooseDb(dataBaseName: string){
+  return mongoose.connection.dropCollection(dataBaseName);
+}
+
+export { openMongooseConnection, closeMongooseConnection, dropMongooseDb };

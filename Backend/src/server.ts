@@ -1,6 +1,6 @@
 import app from './app';
 import { config } from './config/app-config';
-import { openMongooseConnection } from 'conn';
+import { openMongooseConnection } from './conn';
 
 openMongooseConnection(config.db)
   .then(() => {
