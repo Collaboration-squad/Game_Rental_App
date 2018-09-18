@@ -1,5 +1,6 @@
 import "jasmine";
 import * as request from "supertest";
+import * as nock from "nock";
 import app from "../app";
 import { config } from "../config/app-config";
 import { User } from "../models/user.model";
@@ -69,5 +70,22 @@ describe("/login", () => {
         done();
       })
       .catch(() => done());
+  });
+
+  it("should prevent to login when wrong credentials are passed", done => {
+  nock("http://localhost:3000")
+        .post("http://localhost:3000/login", mockUser)
+      // .replyWithError('internal err')
+      .reply(250, { body: "surprise" });
+
+      request(app)
+      .post(`/login`)
+      .send(mockUser)
+      .then((res)=>{
+        console.log('error here')
+        console.log(res.status)
+        expect(res.status).toBe(250);
+        done()
+      }).catch(err=> done())
   });
 });
