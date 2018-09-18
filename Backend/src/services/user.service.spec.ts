@@ -1,43 +1,36 @@
-import 'jasmine';
-import * as bcrypt from 'bcrypt';
-import { IUser } from '../models/user.interface';
-import { User } from '../models/user.model';
-import { UserService } from './user.service';
+import "jasmine";
+import * as bcrypt from "bcrypt";
+import { User } from "../models/user.model";
+import { UserService } from "./user.service";
+import { mockUser } from "../mocks/users.mock";
 
-describe('User service', () => {
-    const user = new User({
-        email: 'test@email.com',
-        password: '1234'
-    })
-    let userService: UserService;
+describe("User service", () => {
+  const user = new User(mockUser);
+  let userService: UserService;
 
-    beforeEach(() => {
-        userService = new UserService();
-    });
-    beforeEach(() => {
-        spyOn(User, 'findOne')
-        spyOn(bcrypt, 'hashSync')
-        spyOn(user, 'save')
-    });
+  beforeAll(() => {
+    userService = new UserService();
+  });
 
-    describe('create', () => {
-        it('should check if bcrypt hashSync method was called', () => {
-            userService.create(user);
-            expect(bcrypt.hashSync).toHaveBeenCalled();
-            expect(bcrypt.hashSync).toHaveBeenCalledWith('1234', 10);
-        });
-        it('should check if method save was called', () => {
-            userService.create(user);
-            expect(user.save).toHaveBeenCalled();
-        });
-    })
-    describe('getUser', () => {
-        it('should check if method findOne was called', () => {
-            userService.getUser(user.email);
-            expect(User.findOne).toHaveBeenCalled();
-            expect(User.findOne).toHaveBeenCalledWith(user.email);
-        });
-    })
+  beforeAll(() => {
+    spyOn(User, "findOne");
+    spyOn(bcrypt, "hashSync");
+    spyOn(user, "save");
+  });
 
+  it("should hash user password while creating new user", () => {
+    userService.create(user);
+    expect(bcrypt.hashSync).toHaveBeenCalled();
+    expect(bcrypt.hashSync).toHaveBeenCalledWith("1234", 10);
+  });
+  it("should save user to database", () => {
+    userService.create(user);
+    expect(user.save).toHaveBeenCalled();
+  });
 
+  it("should check if user is present in database", () => {
+    userService.getUser(user.email);
+    expect(User.findOne).toHaveBeenCalled();
+    expect(User.findOne).toHaveBeenCalledWith(user.email);
+  });
 });
