@@ -35,6 +35,7 @@ describe("/login", () => {
     connector.dropDb("users");
   });
 
+<<<<<<< HEAD
   it("should login user", done => {
     request(app)
       .post(`/login`)
@@ -69,5 +70,46 @@ describe("/login", () => {
         done();
       })
       .catch(done);
+=======
+  describe('/login', () => {
+    it('should login user', done => {
+      request(app)
+        .post(`/login`)
+        .send(mockUser)
+        .then(resp => {
+          console.log(resp);
+          expect(resp.status).toEqual(200);
+          expect(resp.body.msg).toBeTruthy();
+          done();
+        })
+        .catch(err => done());
+    });
+
+    it('should prevent to login when wrong password is passed', done => {
+      mockUser.password ="12345"
+      request(app)
+        .post(`/login`)
+        .send(mockUser)
+        .then(resp => {
+          expect(resp.status).toEqual(401);
+          expect(resp.body.message).toEqual('invalid email');
+          done();
+        })
+        .catch(err => done());
+    });
+
+    it('should prevent to login when wrong credentials are passed', done => {
+      mockUser.email = 'test@wrong.com'
+      request(app)
+        .post(`/login`)
+        .send(mockUser)
+        .then(resp => {
+          expect(resp.status).toEqual(404);
+          expect(resp.body.message).toEqual('wrong login or password');
+          done();
+        })
+        .catch(err => done());
+    });
+>>>>>>> b1c4d09854a20881434d974af558b52644a2c127
   });
 });
