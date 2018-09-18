@@ -44,7 +44,7 @@ describe("/login", () => {
         expect(resp.body.msg).toBeTruthy();
         done();
       })
-      .catch(()=> done());
+      .catch(() => done());
   });
 
   it("should prevent to login when wrong password is passed", done => {
@@ -56,7 +56,7 @@ describe("/login", () => {
         expect(resp.body.msg).toEqual("wrong login or password");
         done();
       })
-      .catch(()=> done());
+      .catch(() => done());
   });
 
   it("should prevent to login when wrong credentials are passed", done => {
@@ -68,6 +68,6 @@ describe("/login", () => {
         expect(resp.body.msg).toEqual("wrong login or password");
         done();
       })
-      .catch(()=> done());
+      .catch(() => done());
   });
 });
