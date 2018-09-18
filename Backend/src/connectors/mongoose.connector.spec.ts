@@ -1,7 +1,7 @@
-import * as mongoose from "mongoose";
 import "jasmine";
-import { connector } from "./mongoose.connector";
+import * as mongoose from "mongoose";
 import { config } from "../config/app-config";
+import { connector } from "./mongoose.connector";
 
 describe("MongooseConnector", () => {
   beforeAll(() => {
