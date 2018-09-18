@@ -1,11 +1,11 @@
-import * as express from 'express';
-import * as bodyParser from 'body-parser';
-import * as passport from 'passport';
-import * as session from 'express-session';
-import { userRouter } from './routes/users.routes';
-import { gamesRouter } from './routes/games.routes';
-import { authRouter } from './routes/auth.routes';
-import { setUpPassportStrategy } from './config/passport';
+import * as express from "express";
+import * as bodyParser from "body-parser";
+import * as passport from "passport";
+import * as session from "express-session";
+import { userRouter } from "./routes/users.routes";
+import { gamesRouter } from "./routes/games.routes";
+import { authRouter } from "./routes/auth.routes";
+import { setUpPassportStrategy } from "./config/passport";
 
 class App {
   public app: express.Application;
@@ -18,9 +18,9 @@ class App {
 
   private loadRoutes(): void {
     // Routes
-    this.app.use('/user', userRouter);
-    this.app.use('/login', authRouter);
-    this.app.use('/games', gamesRouter);
+    this.app.use("/user", userRouter);
+    this.app.use("/login", authRouter);
+    this.app.use("/games", gamesRouter);
   }
 
   private config(): void {
@@ -28,17 +28,20 @@ class App {
     this.app.use(bodyParser.json());
     //support application/x-www-form-urlencoded post data
     this.app.use(bodyParser.urlencoded({ extended: false }));
+
+    //TODO
+    // remove session from json ??
+    // remove local from json
+
     //set up session
     this.app.use(
       session({
-        secret: 'secret',
-        resave: true,
-        saveUninitialized: true
+        secret: "secret"
       })
     );
 
     // set up passport auth
-    setUpPassportStrategy(passport)
+    setUpPassportStrategy(passport);
     this.app.use(passport.initialize());
     this.app.use(passport.session());
   }

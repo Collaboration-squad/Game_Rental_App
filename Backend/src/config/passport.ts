@@ -1,17 +1,3 @@
-// const { email, password } = req.body;
-
-// return this.userService
-//   .getUser({ email })
-//   .then((user: IUser) => {
-//     const match = bcrypt.compareSync(password, user.password);
-
-//     return match
-//       ? res.status(200).send({ msg: `user ${user._id} successfully login` })
-//       : res.status(401).send({ msg: 'invalid email' });
-//   })
-//   .catch(err => res.status(404).send({ msg: 'wrong login or password' }));
-
-// import * as passport from 'passport';
 import * as local from 'passport-local';
 import * as bcrypt from 'bcrypt';
 import { User } from '../models/user.model';
@@ -23,18 +9,16 @@ export const setUpPassportStrategy = function(passport) {
         email: email
       }).then(user => {
         if (!user) {
-          console.log('wrong email, no user in db');
-          return done(null, false, { message: 'wrong login or password' });
+          console.log('PASSPORT wrong email, no user in db');
+          return done(null, false);
         }
-        console.log(user);
-        console.log(password);
-        console.log(typeof password);
         const match = bcrypt.compareSync(password, user.password);
         console.log('match', match);
         if (match) {
+          console.log(' PASSPORT user ok');
           done(null, user);
         } else {
-          return done(null, false, { message: 'invalid email' });
+          return done(null, false);
         }
       });
     })
@@ -42,12 +26,12 @@ export const setUpPassportStrategy = function(passport) {
 
   passport.serializeUser(function(user, done) {
     user.id = user._id;
-    console.log('userid', user);
+    console.log('serialize user');
     done(null, user.id);
   });
 
   passport.deserializeUser(function(id, done) {
-    console.log('called deserilaize')
+    console.log('called de-serialize')
     User.findOne({_id: id},'-password -salt', function(err, user) {
       done(err, user);
     });
