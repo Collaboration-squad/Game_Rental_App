@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
-import { UserService } from './../services/user.service';
-import { IUser } from './../models/user.interface';
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from "bcrypt";
+import { Request, Response } from "express";
+import { IUser } from "./../models/user.interface";
+import { UserService } from "./../services/user.service";
 
 class AuthController {
   constructor(private userService: UserService) {}
@@ -16,9 +16,9 @@ class AuthController {
 
         return match
           ? res.status(200).send({ msg: `user ${user._id} successfully login` })
-          : res.status(401).send({ msg: 'invalid email' });
+          : res.status(401).send({ msg: "invalid email" });
       })
-      .catch(err => res.status(404).send({ msg: 'wrong login or password' }));
+      .catch(() => res.status(404).send({ msg: "wrong login or password" }));
   }
 }
 const service = new UserService();
