@@ -1,25 +1,29 @@
+import { Request, Response, NextFunction } from "express";
+import * as passport from "passport";
 import * as bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import { IUser } from "./../models/user.interface";
 import { UserService } from "./../services/user.service";
-
+ 
 class AuthController {
-  constructor(private userService: UserService) {}
+  public onUserLogin(req: Request, res: Response, next: NextFunction): void {
+    passport.authenticate("local", (err, user, info) => {
+      if (err) {
+        return res.status(500).send({ msg: "internal error" });
+      }
 
-  public onUserLogin(req: Request, res: Response): Promise<Response> {
-    const { email, password } = req.body;
+      if (!user) {
+        return res.status(401).send({ msg: "wrong login or password" });
+      }
 
-    return this.userService
-      .getUser({ email })
-      .then((user: IUser) => {
-        const match = bcrypt.compareSync(password, user.password);
-
-        return match
-          ? res.status(200).send({ msg: `user ${user._id} successfully login` })
-          : res.status(401).send({ msg: "invalid email" });
-      })
-      .catch(() => res.status(404).send({ msg: "wrong login or password" }));
+      req.logIn(user, err => {
+        if (err) return next(err);
+        return res
+          .status(200)
+          .send({ msg: `user ${user._id} successfully login` });
+      });
+    })(req, res, next);
   }
 }
-const service = new UserService();
-export const controller = new AuthController(service);
+
+export const controller = new AuthController();
