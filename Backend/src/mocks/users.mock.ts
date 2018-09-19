@@ -19,5 +19,5 @@ export const mockUserWithHashedPassword = {
 };
 
 export const invalidUser = {
-  password: '12345'
-}
+  password: "12345"
+};

@@ -1,6 +1,6 @@
-import { IUser } from '../models/user.interface';
-import { User } from '../models/user.model';
-import * as bcrypt from 'bcrypt';
+import { IUser } from "../models/user.interface";
+import { User } from "../models/user.model";
+import * as bcrypt from "bcrypt";
 
 export class UserService {
   public create(user): Promise<IUser> {
@@ -8,6 +8,6 @@ export class UserService {
     return user.save();
   }
   public getUser(query): any {
-    return User.findOne(query)
+    return User.findOne(query);
   }
 }

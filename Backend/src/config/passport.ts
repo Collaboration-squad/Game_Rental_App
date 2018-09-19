@@ -1,13 +1,12 @@
-import * as local from "passport-local";
 import * as bcrypt from "bcrypt";
+import * as local from "passport-local";
 import { User } from "../models/user.model";
 
-export const setUpPassportStrategy = function(passport) {
+export const setUpPassportStrategy = (passport) => {
   passport.use(
     new local.Strategy({ usernameField: "email" }, (email, password, done) => {
-      User.findOne({
-        email: email
-      }).then(user => {
+      User.findOne({ email })
+      .then( (user) => {
         if (!user) {
           return done(null, false);
         }
@@ -21,13 +20,13 @@ export const setUpPassportStrategy = function(passport) {
     })
   );
 
-  passport.serializeUser(function(user, done) {
+  passport.serializeUser((user, done) => {
     user.id = user._id;
     done(null, user.id);
   });
 
-  passport.deserializeUser(function(id, done) {
-    User.findOne({ _id: id }, "-password -salt", function(err, user) {
+  passport.deserializeUser((id, done) => {
+    User.findOne({ _id: id }, "-password -salt", (err, user) => {
       done(err, user);
     });
   });
