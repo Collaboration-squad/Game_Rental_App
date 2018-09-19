@@ -10,6 +10,9 @@ I has been coded in a collaboration of 2 developers: Oliwia (frontend) and Krzys
 * Angular Material
 * SCSS
 * REST
+* Node
+* TypeScript
+* Jasmine && Karma
 * Surge
 
 ## Functionality
