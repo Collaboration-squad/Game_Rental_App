@@ -44,7 +44,7 @@ describe("/login", () => {
         expect(resp.body.msg).toBeTruthy();
         done();
       })
-      .catch(done);
+      .catch(() => done());
   });
 
   it("should prevent to login when wrong password is passed", done => {
@@ -53,10 +53,10 @@ describe("/login", () => {
       .send(mockUserWithWrongPassword)
       .then(resp => {
         expect(resp.status).toEqual(401);
-        expect(resp.body.msg).toEqual("invalid email");
+        expect(resp.body.msg).toEqual("wrong login or password");
         done();
       })
-      .catch(done);
+      .catch(() => done());
   });
 
   it("should prevent to login when wrong credentials are passed", done => {
@@ -64,10 +64,10 @@ describe("/login", () => {
       .post(`/login`)
       .send(mockUserWithWrongEmail)
       .then(resp => {
-        expect(resp.status).toEqual(404);
+        expect(resp.status).toEqual(401);
         expect(resp.body.msg).toEqual("wrong login or password");
         done();
       })
-      .catch(done);
+      .catch(() => done());
   });
 });
