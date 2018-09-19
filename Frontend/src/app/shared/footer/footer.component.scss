@@ -1,0 +1,65 @@
+footer {
+    background-color: #F2E3E2;
+    margin-bottom: 0;
+    font-family: 'Marck Script', cursive;
+
+    .footer-title {
+        font-size: 28px;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 15px;
+        margin: 0;
+    }
+
+    .amp {
+        font-size: 32px;
+        font-weight: 300;
+        text-align: center;
+        padding-top: 15px;
+        margin-top: 10px;;
+    }
+
+    .contact {
+        display: flex;
+        justify-content: space-evenly;
+
+        div {
+            text-align: center;
+
+            .name {
+                font-family: 'Marck Script';
+                font-size: 24px;
+                margin: 10px;
+            }
+
+            .stack {
+                margin: 10px;
+            }
+
+            .social {
+                list-style: none;
+                padding: 0;
+        
+                li {
+                    display: inline-block;
+            
+                    &:not(:last-child) {
+                        margin-right: 8px;
+                    }
+                }
+        
+                .icon {
+                    padding: 8px;
+        
+                    svg {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }      
+    }
+
+    
+
+}
