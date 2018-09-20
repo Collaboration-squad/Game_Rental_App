@@ -29,10 +29,6 @@ class App {
     // support application/x-www-form-urlencoded post data
     this.app.use(bodyParser.urlencoded({ extended: false }));
 
-    // TODO
-    // remove session from json ??
-    // remove local from json
-
     // set up session
     this.app.use(
       session({
