@@ -26,7 +26,7 @@ describe("/user", () => {
         expect(resp.body.msg).toEqual("user created");
         done();
       })
-      .catch(done);
+      .catch(() => done());
   });
 
   it("should return error msg when request body is broken", done => {
@@ -38,6 +38,6 @@ describe("/user", () => {
         expect(resp.body.msg).toEqual("failed to create user");
         done();
       })
-      .catch(done);
+      .catch(() => done());
   });
 });
