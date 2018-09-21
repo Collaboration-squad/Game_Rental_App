@@ -27,8 +27,6 @@ describe("AuthController", () => {
       () => null
     );
     controller.onUserLogin(req, res, next);
-    console.log(res);
-
     expect(passportSpy).toHaveBeenCalled();
   });
 });
