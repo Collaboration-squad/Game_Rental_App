@@ -1,9 +1,6 @@
 import "jasmine";
-import * as request from "supertest";
 import * as nodeMocks from "node-mocks-http";
 import * as passport from "passport";
-
-import app from "../app";
 import { controller } from "./auth.controller";
 import { mockUser } from "./../mocks/users.mock";
 import { Request, Response, NextFunction } from "express";
