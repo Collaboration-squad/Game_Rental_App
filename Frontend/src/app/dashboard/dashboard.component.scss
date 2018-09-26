@@ -9,22 +9,23 @@
         width: 100%;
         text-transform: uppercase;
         
-        mat-header-row {
+        /deep/ .mat-header-row {
             border-color: #C9B7C3;
+            border-bottom: 4px solid #C9B7C3;
+            background-color: #F0EBEE;
 
-            mat-header-cell {
+            th {
                 text-align: left;
                 font-weight: 500;
                 font-size: 12px;
-                border-bottom: 4px solid #C9B7C3;
-                background-color: #F0EBEE;
+
             }
         }
 
-        mat-row {
+        /deep/ .mat-row {
             border-color: #C9B7C3;
 
-            mat-cell {
+            td {
                 font-size: 12px;
                 background-color: #FDFBFA;
 

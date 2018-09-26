@@ -8,12 +8,14 @@ I has been coded in a collaboration of 2 developers: Oliwia (frontend) and Krzys
 
 * Angular 6
 * Angular Material
+* TypeScript
+* JavaScript
 * SCSS
 * REST
-* Node
-* TypeScript
+* NodeJS
 * Jasmine && Karma
-* Surge
+* Google Cloud Services (WIP)
+* Docker (WIP)
 
 ## Functionality
 
