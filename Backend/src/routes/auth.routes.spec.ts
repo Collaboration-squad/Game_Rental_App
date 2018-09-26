@@ -70,4 +70,27 @@ describe("/login", () => {
       })
       .catch(() => done());
   });
+
+  it("should return response with cookie when user is correctly validated", done => {
+      request(app)
+      .post(`/login`)
+      .send(mockUser)
+      .then(resp => {
+        expect(resp.header["set-cookie"]).toBeTruthy();
+        expect(resp.header["set-cookie"].length).toEqual(1);
+        done();
+      })
+      .catch(() => done());
+  });
+
+  it("should return response without cookie when user is not validated", done => {
+    request(app)
+      .post(`/login`)
+      .send(mockUserWithWrongEmail)
+      .then(resp => {
+        expect(resp.header["set-cookie"]).toBeFalsy();
+        done();
+      })
+      .catch(() => done());
+  });
 });
