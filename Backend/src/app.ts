@@ -32,7 +32,7 @@ class App {
     // set up session
     this.app.use(
       session({
-        secret: "secret", 
+        secret: "secret",
         resave: false,
         saveUninitialized: false
       })
