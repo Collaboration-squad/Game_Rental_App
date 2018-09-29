@@ -1,6 +1,6 @@
 # The Game Rental Applicaton
 
-This application allows you to rent board games.
+This application allows you to rent and return board games.
 
 I has been coded in a collaboration of 2 developers: Oliwia (frontend) and Krzysztof (backend) in order for us to learn and practice both new technologies and teamwork.
 
@@ -12,18 +12,22 @@ I has been coded in a collaboration of 2 developers: Oliwia (frontend) and Krzys
 * JavaScript
 * SCSS
 * REST
-* NodeJS
+* Node.js
 * Jasmine && Karma
 * Google Cloud Services (WIP)
 * Docker (WIP)
 
 ## Functionality
 
-[work in progress]
+The user may:
+* view the list of games on the main page
+* rent and return games
+* create an account and log in
+* view profile with the list or previously and currently rented games
 
 ## Used methods
 
-* Kanban
-* [work in progesss]
+* Kanban for planning work
+* Slack for easier communication
 
 [WIP - PREVIEW OUR APP](WIP)
