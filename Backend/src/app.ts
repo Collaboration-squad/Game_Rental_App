@@ -19,7 +19,7 @@ class App {
   private loadRoutes(): void {
     // Routes
     this.app.use("/user", userRouter);
-    this.app.use("/login", authRouter);
+    this.app.use("/auth", authRouter);
     this.app.use("/games", gamesRouter);
   }
 
@@ -28,7 +28,6 @@ class App {
     this.app.use(bodyParser.json());
     // support application/x-www-form-urlencoded post data
     this.app.use(bodyParser.urlencoded({ extended: false }));
-
     // set up session
     this.app.use(
       session({
