@@ -6,7 +6,7 @@ I has been coded in a collaboration of 2 developers: Oliwia (frontend) and Krzys
 
 ## Starting app with Docker
 
-To start application run form console:
+To start application run from console:
 
 ```
 docker-compose up
