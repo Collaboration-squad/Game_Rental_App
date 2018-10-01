@@ -1,0 +1,18 @@
+version: "2"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    expose:
+      - 27017
+  express:
+    build: Backend
+    restart: always
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  angular:
+    build: Frontend
+    ports:
+      - "4200:4200"

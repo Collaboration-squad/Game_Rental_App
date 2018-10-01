@@ -3,7 +3,7 @@ import { config } from "./config/app-config";
 import { connector } from "./connectors/mongoose.connector";
 
 connector
-  .openConnection(config.dbDev)
+  .openConnection(config.db)
   .then(() => {
     console.log("connection established");
     app.listen(config.port, () => {
