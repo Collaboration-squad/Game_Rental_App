@@ -1,3 +1,25 @@
-<p>
-  signin-popup works!
-</p>
+<h1>Sign in</h1>
+<div mat-dialog-content>
+	<form>
+		<mat-form-field appearance="outline">
+			<label>Login</label>
+			<input matInput placeholder="Enter your login">
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+        <label>Email</label>
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+		<mat-form-field appearance="outline">
+				<label>Password</label>
+			<input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+			<mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+		</mat-form-field>
+	</form>
+</div>
+<div mat-dialog-actions class="btns-group">
+	<button mat-raised-button (click)="onNoClick()">No Thanks</button>
+	<button mat-raised-button cdkFocusInitial>Ok</button>
+</div>

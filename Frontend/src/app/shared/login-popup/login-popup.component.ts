@@ -8,7 +8,7 @@ import { LoginPopup } from 'src/app/shared/models/loginPopup';
   styleUrls: ['./login-popup.component.scss']
 })
 export class LoginPopupComponent {
-  hide = true;
+
   constructor(
     public dialogRef: MatDialogRef<LoginPopupComponent>,
     @Inject(MAT_DIALOG_DATA) public data: LoginPopup

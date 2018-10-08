@@ -1,0 +1,12 @@
+h1 {
+    font-family: 'Marck Script', cursive;
+    text-align: center;
+}
+
+.btns-group {
+    float: right;
+
+    button:first-child {
+        margin-right: 15px;
+    }
+}
