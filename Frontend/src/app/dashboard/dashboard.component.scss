@@ -15,10 +15,9 @@
             background-color: #F0EBEE;
 
             th {
-                text-align: left;
+                text-align: center;
                 font-weight: 500;
                 font-size: 12px;
-
             }
         }
 
@@ -26,6 +25,7 @@
             border-color: #C9B7C3;
 
             td {
+                text-align: center;
                 font-size: 12px;
                 background-color: #FDFBFA;
 
@@ -39,5 +39,4 @@
             }
         }
     }
-
 }
