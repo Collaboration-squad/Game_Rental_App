@@ -5,13 +5,13 @@ import { LoginPopup } from 'src/app/shared/models/loginPopup';
 @Component({
   selector: 'app-login-popup',
   templateUrl: './login-popup.component.html',
-  styleUrls: ['./login-popup.component.css']
+  styleUrls: ['./login-popup.component.scss']
 })
 export class LoginPopupComponent {
-
+  hide = true;
   constructor(
     public dialogRef: MatDialogRef<LoginPopupComponent>,
-    @Inject(MAT_DIALOG_DATA) public loginData: LoginPopup
+    @Inject(MAT_DIALOG_DATA) public data: LoginPopup
   ) { }
 
   onNoClick(): void {

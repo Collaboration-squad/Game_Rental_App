@@ -8,16 +8,20 @@ import { LoginPopupComponent } from 'src/app/shared/login-popup/login-popup.comp
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
   login: string;
   password: string;
 
   constructor(public dialog: MatDialog) {}
 
   openLoginPopup(): void {
-    this.dialog.open(LoginPopupComponent, {
-      width: '250px',
+    const loginRef = this.dialog.open(LoginPopupComponent, {
+      height: '400px',
+      width: '350px',
       data: {login: this.login, password: this.password}
+    });
+
+    loginRef.afterClosed().subscribe(() => {
+      console.log('You were successfully logged in');
     });
   }
 
