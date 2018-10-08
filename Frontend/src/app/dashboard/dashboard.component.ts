@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+import { SnackBarComponent } from 'src/app/shared/snackBar/snackBar.component';
 
 export interface GameElement {
   position: number;
@@ -28,6 +30,7 @@ const GAMES: GameElement[] = [
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
+
   displayedColumns: string[] = [
     'position',
     'game',
@@ -38,4 +41,15 @@ export class DashboardComponent {
     'rent'
   ];
   dataSource = GAMES;
+
+  constructor(
+    public snackBar: MatSnackBar
+  ) {}
+
+  rentGame() {
+		this.snackBar.openFromComponent(SnackBarComponent, {
+			duration: 2000,
+		});
+	}
+
 }

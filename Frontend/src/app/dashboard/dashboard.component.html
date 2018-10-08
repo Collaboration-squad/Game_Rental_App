@@ -31,7 +31,7 @@
         </ng-container>
 
         <ng-container matColumnDef="rent">
-            <th mat-header-cell *matHeaderCellDef> Rent </th>
+            <th mat-header-cell *matHeaderCellDef (click)="rentGame"> Rent </th>
             <td mat-cell *matCellDef="let element"><button mat-stroked-button>Rent</button></td>
         </ng-container>
       
