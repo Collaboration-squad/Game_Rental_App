@@ -10,6 +10,7 @@ import { FooterComponent } from 'src/app/shared/footer/footer.component';
 import { LoginPopupComponent } from 'src/app/shared/login-popup/login-popup.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SigninPopupComponent } from 'src/app/shared/signin-popup/signin-popup.component';
+import { SnackBarComponent } from 'src/app/shared/snackBar/snackBar.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { SigninPopupComponent } from 'src/app/shared/signin-popup/signin-popup.c
 		HeaderComponent,
 		LoginPopupComponent,
 		SigninPopupComponent,
+		SnackBarComponent,
 	],
 	imports: [
 		BrowserAnimationsModule,
@@ -30,7 +32,8 @@ import { SigninPopupComponent } from 'src/app/shared/signin-popup/signin-popup.c
 	entryComponents: [
 		HeaderComponent,
 		LoginPopupComponent,
-		SigninPopupComponent
+		SigninPopupComponent,
+		SnackBarComponent,
 	],
 	providers: [],
 	bootstrap: [AppComponent]
