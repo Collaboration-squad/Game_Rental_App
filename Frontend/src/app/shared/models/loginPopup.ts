@@ -1,4 +1,4 @@
 export interface LoginPopup {
-    login: string;
-    password: string;
+	login: string;
+	password: string;
 }

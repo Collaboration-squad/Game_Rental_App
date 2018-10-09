@@ -12,27 +12,27 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SigninPopupComponent } from 'src/app/shared/signin-popup/signin-popup.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DashboardComponent,
-    FooterComponent,
-    HeaderComponent,
-    LoginPopupComponent,
-    SigninPopupComponent,
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    FormsModule,
-    MaterialModule,
-    ReactiveFormsModule,
-  ],
-  entryComponents: [
-    HeaderComponent,
-    LoginPopupComponent,
-    SigninPopupComponent
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		DashboardComponent,
+		FooterComponent,
+		HeaderComponent,
+		LoginPopupComponent,
+		SigninPopupComponent,
+	],
+	imports: [
+		BrowserAnimationsModule,
+		BrowserModule,
+		FormsModule,
+		MaterialModule,
+		ReactiveFormsModule,
+	],
+	entryComponents: [
+		HeaderComponent,
+		LoginPopupComponent,
+		SigninPopupComponent
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
